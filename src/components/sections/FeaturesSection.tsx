@@ -119,23 +119,30 @@ export function FeaturesSection() {
             {comingSoonFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="group relative p-6 rounded-2xl bg-gradient-to-b from-purple-500/[0.05] to-transparent border border-purple-500/10 hover:border-purple-500/20 transition-all duration-300"
+                className="group relative p-6 rounded-2xl bg-gradient-to-b from-purple-500/[0.05] to-transparent border border-purple-500/10 transition-all duration-300"
               >
-                {/* Glow effect */}
-                <div className="absolute inset-0 rounded-2xl bg-purple-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Blurred content */}
+                <div className="blur-[6px] select-none pointer-events-none">
+                  {/* Icon */}
+                  <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600/30 to-violet-600/30 border border-purple-500/30 flex items-center justify-center mb-4">
+                    <feature.icon className="w-6 h-6 text-purple-300" />
+                  </div>
 
-                {/* Icon */}
-                <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600/30 to-violet-600/30 border border-purple-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-6 h-6 text-purple-300" />
+                  {/* Content */}
+                  <h3 className="relative text-lg font-semibold text-white mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="relative text-white/40 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
 
-                {/* Content */}
-                <h3 className="relative text-lg font-semibold text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="relative text-white/40 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+                {/* Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 backdrop-blur-sm">
+                    <span className="text-purple-300 text-sm font-medium">Coming Soon</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
