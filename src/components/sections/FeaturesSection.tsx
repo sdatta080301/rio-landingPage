@@ -5,12 +5,10 @@ import {
   Link2,
   Tags,
   Target,
-  TrendingUp,
   CreditCard,
   Plane,
   Sparkles,
   Brain,
-  ArrowRight
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -27,13 +25,8 @@ const currentFeatures = [
   },
   {
     icon: Target,
-    title: "Budget Setting",
-    description: "Set custom budgets for any category and take control of your spending.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Budget Tracking",
-    description: "Monitor your progress in real-time with visual insights and alerts.",
+    title: "Smart Budgeting",
+    description: "Set custom budgets and track your progress in real-time with visual insights and alerts.",
   },
   {
     icon: CreditCard,
