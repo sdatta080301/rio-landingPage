@@ -1,23 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { WaitlistModal } from "@/components/shared/WaitlistModal";
 
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {
+        // Autoplay failed - this is expected on some mobile browsers
+        // Video will show poster image as fallback
+      });
+    }
+  }, []);
 
   return (
     <>
       <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
+        <div className="absolute inset-0 bg-[#0a0a12]" /> {/* Fallback bg color */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/video/hero-poster.jpg"
         >
           <source src="/video/hero-bg.mp4" type="video/mp4" />
         </video>
