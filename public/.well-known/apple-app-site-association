@@ -1,0 +1,11 @@
+{
+    "applinks": {
+      "apps": [],
+      "details": [
+        {
+          "appID": "MDK6GK5Z84.com.riofinancials.app",
+          "paths": ["/plaid/oauth", "/plaid/oauth/*"]
+        }
+      ]
+    }
+  }
