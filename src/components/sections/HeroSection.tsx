@@ -55,7 +55,7 @@ export function HeroSection() {
 
             {/* Right Card - Phone Mockup */}
             <motion.div
-              className="bento-card relative overflow-hidden"
+              className="bento-card relative overflow-hidden min-h-[400px] sm:min-h-[500px] lg:min-h-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
