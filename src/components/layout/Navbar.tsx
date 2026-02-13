@@ -9,9 +9,8 @@ import { ArrowUpRight, Home, Globe, CreditCard, LayoutGrid, Menu } from "lucide-
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Home },
-  { href: "#features", label: "Services", icon: Globe },
-  { href: "#pricing", label: "Pricing", icon: CreditCard },
-  { href: "#about", label: "Features", icon: LayoutGrid },
+  { href: "#features", label: "Features", icon: LayoutGrid },
+  { href: "#about", label: "About Us", icon: Globe },
 ];
 
 export function Navbar() {
@@ -31,20 +30,20 @@ export function Navbar() {
               height={28}
               className="rounded-lg"
             />
-            <span className="text-lg font-bold text-text-primary">rio.</span>
+            <span className="text-lg font-bold text-text-primary">rio financials.</span>
           </Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className="flex items-center gap-1.5 px-4 py-2 text-sm text-text-secondary hover:text-text-primary transition-colors rounded-full hover:bg-surface"
               >
                 <link.icon className="w-3.5 h-3.5" />
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 
