@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
 import { WaitlistModal } from "@/components/shared/WaitlistModal";
-import { Sparkles } from "lucide-react";
+import { ArrowUpRight, Home, Globe, CreditCard, LayoutGrid, Menu } from "lucide-react";
 
 const navLinks = [
-  { href: "#about", label: "About us" },
-  { href: "#features", label: "Features" },
+  { href: "#home", label: "Home", icon: Home },
+  { href: "#features", label: "Features", icon: LayoutGrid },
+  { href: "#about", label: "About Us", icon: Globe },
 ];
 
 export function Navbar() {
@@ -17,63 +19,58 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating Navbar Container */}
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-md">
-        <nav className="relative flex items-center justify-between px-2 py-2 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/[0.03] via-transparent to-purple-500/[0.03] pointer-events-none" />
+      <div className="sticky top-0 z-50 bg-background px-4 sm:px-6 lg:px-8 pt-4">
+        <nav className="max-w-7xl mx-auto bento-card px-4 sm:px-6 py-3 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/rio-icon.png"
+              alt="Rio"
+              width={28}
+              height={28}
+              className="rounded-lg"
+            />
+            <span className="text-lg font-bold text-text-primary">rio financials.</span>
+          </Link>
 
-          {/* Desktop Navigation - Evenly spaced */}
-          <div className="hidden md:flex items-center justify-between w-full">
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className="flex-1 text-center px-4 py-2 text-sm text-white/60 hover:text-white transition-colors rounded-xl hover:bg-white/[0.05]"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm text-text-secondary hover:text-text-primary transition-colors rounded-full hover:bg-surface"
               >
+                <link.icon className="w-3.5 h-3.5" />
                 {link.label}
-              </Link>
+              </a>
             ))}
+          </div>
 
-            {/* Join Waitlist Button */}
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex-1 group relative inline-flex items-center justify-center gap-2 px-4 py-2 text-white text-sm font-medium rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+              className="cta-button inline-flex items-center gap-2 px-5 py-2.5 bg-rio-green text-text-primary font-medium text-sm rounded-full"
             >
-              {/* Gradient background */}
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-violet-600 opacity-90 group-hover:opacity-100 transition-opacity" />
-              {/* Content */}
-              <span className="relative flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                Join Waitlist
-              </span>
+              Try Beta
+            </button>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center justify-center w-10 h-10 bg-text-primary text-white rounded-full hover:bg-text-primary/90 transition-colors"
+            >
+              <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center justify-between w-full">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="flex-1 text-center px-3 py-2 text-sm text-white/60 hover:text-white transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            {/* Mobile Waitlist Button */}
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="flex-1 group relative inline-flex items-center justify-center gap-1 px-3 py-2 text-white text-sm font-medium rounded-xl overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-violet-600 opacity-90" />
-              <span className="relative flex items-center gap-1">
-                <Sparkles className="w-3 h-3" />
-                Waitlist
-              </span>
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="md:hidden p-2 text-text-primary"
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
         </nav>
       </div>
 
@@ -81,7 +78,7 @@ export function Navbar() {
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        links={navLinks}
+        links={navLinks.map(({ href, label }) => ({ href, label }))}
         onWaitlistClick={() => {
           setMobileMenuOpen(false);
           setIsModalOpen(true);

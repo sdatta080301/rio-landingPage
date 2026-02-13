@@ -8,8 +8,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Rio - Spend Smarter",
-  description: "Automated tracking designed to keep your finances in perfect alignment.",
+  title: "Rio Financials - Control Your Finance Future",
+  description: "Streamline your financial management with our intuitive, scalable platform. Automated tracking designed for smarter spending.",
 };
 
 export default function RootLayout({

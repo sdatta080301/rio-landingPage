@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Sparkles } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -13,7 +13,6 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMenuProps) {
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -35,7 +34,7 @@ export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMe
       {/* Backdrop */}
       <div
         className={cn(
-          "absolute inset-0 bg-background/95 backdrop-blur-xl transition-opacity duration-300",
+          "absolute inset-0 bg-white/95 backdrop-blur-xl transition-opacity duration-300",
           isOpen ? "opacity-100" : "opacity-0"
         )}
         onClick={onClose}
@@ -51,23 +50,11 @@ export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMe
         {/* Close Button */}
         <button
           type="button"
-          className="absolute top-4 right-4 p-2 text-white"
+          className="absolute top-4 right-4 p-2 text-text-primary"
           onClick={onClose}
           aria-label="Close menu"
         >
-          <svg
-            className="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <X className="w-8 h-8" />
         </button>
 
         {/* Links */}
@@ -77,7 +64,7 @@ export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMe
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="text-3xl font-semibold text-white hover:text-white/70 transition-colors"
+              className="text-3xl font-semibold text-text-primary hover:text-text-secondary transition-colors"
             >
               {link.label}
             </Link>
@@ -87,10 +74,10 @@ export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMe
           {onWaitlistClick && (
             <button
               onClick={onWaitlistClick}
-              className="flex items-center gap-2 text-3xl font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+              className="flex items-center gap-2 px-8 py-3 bg-rio-green text-text-primary font-semibold text-lg rounded-full"
             >
-              <Sparkles className="w-7 h-7" />
-              Join Waitlist
+              Try Beta
+              <ArrowUpRight className="w-5 h-5" />
             </button>
           )}
         </nav>
