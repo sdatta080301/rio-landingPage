@@ -3,14 +3,14 @@ import Link from "next/link";
 const footerLinks = {
   product: [
     { label: "Features", href: "#features" },
-    { label: "Security", href: "#security" },
+    { label: "Security", href: "/security" },
   ],
   company: [
     { label: "About", href: "#about" },
   ],
   legal: [
-    { label: "Privacy", href: "#privacy" },
-    { label: "Terms", href: "#terms" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ],
 };
 

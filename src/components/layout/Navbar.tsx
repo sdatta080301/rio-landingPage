@@ -53,7 +53,7 @@ export function Navbar() {
               onClick={() => setIsModalOpen(true)}
               className="cta-button inline-flex items-center gap-2 px-5 py-2.5 bg-rio-green text-text-primary font-medium text-sm rounded-full"
             >
-              Join Waitlist
+              Try Beta
             </button>
             <button
               onClick={() => setIsModalOpen(true)}

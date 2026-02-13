@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { WaitlistModal } from "@/components/shared/WaitlistModal";
 
@@ -41,7 +41,7 @@ export function HeroSection() {
                     onClick={() => setIsModalOpen(true)}
                     className="cta-button inline-flex items-center gap-2 px-6 py-3 bg-rio-green text-text-primary font-medium rounded-full text-sm"
                   >
-                    Join Waitlist
+                    Try Beta
                   </button>
                   <button
                     onClick={() => setIsModalOpen(true)}
@@ -49,32 +49,6 @@ export function HeroSection() {
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </button>
-                </div>
-              </div>
-
-              {/* Stats at bottom of left card */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 mt-auto">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center">
-                    <ArrowRight className="w-4 h-4 text-text-secondary" />
-                  </div>
-                  <div className="h-px w-8 bg-border-subtle hidden sm:block" />
-                  <div>
-                    <p className="text-xl font-bold text-text-primary">15 Million+</p>
-                    <p className="text-xs text-text-muted max-w-[200px]">Unlock the power of real-time analytics with our cutting-edge financial</p>
-                  </div>
-                </div>
-
-                {/* Avatar group */}
-                <div className="flex items-center -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-[10px] text-white font-medium"
-                    >
-                      {["JA", "SN", "BS", "AF"][i - 1]}
-                    </div>
-                  ))}
                 </div>
               </div>
             </motion.div>
@@ -89,9 +63,10 @@ export function HeroSection() {
               <Image
                 src="/landing-phone.png"
                 alt="Rio App"
-                width={700}
-                height={600}
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+                quality={100}
                 priority
               />
             </motion.div>

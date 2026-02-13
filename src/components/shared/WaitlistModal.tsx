@@ -57,10 +57,10 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             {/* Header */}
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold text-text-primary mb-2 tracking-tight">
-                Join the Waitlist
+                Get early access to the platform
               </h2>
               <p className="text-text-muted text-sm">
-                Be the first to know when Rio launches.
+                
               </p>
             </div>
 
@@ -89,7 +89,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   <span className="w-5 h-5 border-2 border-text-primary/30 border-t-text-primary rounded-full animate-spin" />
                 ) : (
                   <>
-                    Get Early Access
+                    Try Beta
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}

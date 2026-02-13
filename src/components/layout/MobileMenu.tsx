@@ -76,7 +76,7 @@ export function MobileMenu({ isOpen, onClose, links, onWaitlistClick }: MobileMe
               onClick={onWaitlistClick}
               className="flex items-center gap-2 px-8 py-3 bg-rio-green text-text-primary font-semibold text-lg rounded-full"
             >
-              Join Waitlist
+              Try Beta
               <ArrowUpRight className="w-5 h-5" />
             </button>
           )}
