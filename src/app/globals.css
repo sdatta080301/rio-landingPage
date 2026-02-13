@@ -9,16 +9,17 @@
   --font-sans: 'Inter', var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 
-  /* Rio Custom Colors */
-  --color-surface: hsl(240 15% 8%);
-  --color-surface-glass: hsla(240, 15%, 12%, 0.6);
-  --color-text-primary: hsl(0 0% 100%);
-  --color-text-secondary: hsl(240 5% 70%);
-  --color-text-muted: hsl(240 5% 50%);
-  --color-rio-primary: hsl(265 90% 60%);
-  --color-rio-primary-glow: hsla(265, 90%, 60%, 0.3);
-  --color-border-subtle: hsla(240, 10%, 30%, 0.5);
-  --color-border-glass: hsla(0, 0%, 100%, 0.1);
+  /* Rio Light Theme Colors */
+  --color-surface: hsl(220 20% 96%);
+  --color-surface-card: hsl(0 0% 100%);
+  --color-surface-glass: hsla(220, 20%, 96%, 0.8);
+  --color-text-primary: hsl(220 20% 10%);
+  --color-text-secondary: hsl(220 10% 40%);
+  --color-text-muted: hsl(220 10% 55%);
+  --color-rio-green: hsl(76 88% 69%);
+  --color-rio-green-dark: hsl(76 60% 50%);
+  --color-border-subtle: hsla(220, 15%, 85%, 0.6);
+  --color-border-card: hsla(220, 15%, 90%, 0.8);
 
   /* shadcn color mappings */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -65,38 +66,38 @@
 
 :root {
   --radius: 0.625rem;
-  /* Dark theme as default for Rio */
-  --background: hsl(240 20% 4%);
-  --foreground: hsl(0 0% 100%);
-  --card: hsl(240 15% 8%);
-  --card-foreground: hsl(0 0% 100%);
-  --popover: hsl(240 15% 8%);
-  --popover-foreground: hsl(0 0% 100%);
-  --primary: hsl(265 90% 60%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(240 15% 12%);
-  --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(240 15% 15%);
-  --muted-foreground: hsl(240 5% 50%);
-  --accent: hsl(265 90% 60%);
-  --accent-foreground: hsl(0 0% 100%);
+  /* Light theme for Rio */
+  --background: hsl(220 20% 96%);
+  --foreground: hsl(220 20% 10%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(220 20% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(220 20% 10%);
+  --primary: hsl(76 88% 69%);
+  --primary-foreground: hsl(220 20% 10%);
+  --secondary: hsl(220 20% 93%);
+  --secondary-foreground: hsl(220 20% 10%);
+  --muted: hsl(220 15% 92%);
+  --muted-foreground: hsl(220 10% 55%);
+  --accent: hsl(76 88% 69%);
+  --accent-foreground: hsl(220 20% 10%);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: hsla(240, 10%, 30%, 0.5);
-  --input: hsla(240, 10%, 30%, 0.5);
-  --ring: hsl(265 90% 60%);
+  --border: hsla(220, 15%, 85%, 0.6);
+  --input: hsla(220, 15%, 85%, 0.6);
+  --ring: hsl(76 88% 69%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: hsl(240 15% 8%);
-  --sidebar-foreground: hsl(0 0% 100%);
-  --sidebar-primary: hsl(265 90% 60%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 15% 12%);
-  --sidebar-accent-foreground: hsl(0 0% 100%);
-  --sidebar-border: hsla(240, 10%, 30%, 0.5);
-  --sidebar-ring: hsl(265 90% 60%);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(220 20% 10%);
+  --sidebar-primary: hsl(76 88% 69%);
+  --sidebar-primary-foreground: hsl(220 20% 10%);
+  --sidebar-accent: hsl(220 20% 93%);
+  --sidebar-accent-foreground: hsl(220 20% 10%);
+  --sidebar-border: hsla(220, 15%, 85%, 0.6);
+  --sidebar-ring: hsl(76 88% 69%);
 }
 
 /* Keyframe animations */
@@ -131,31 +132,6 @@
 }
 
 @layer utilities {
-  /* Glassmorphic effects */
-  .glass {
-    background: hsla(240, 15%, 12%, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsla(0, 0%, 100%, 0.1);
-    border-radius: 16px;
-  }
-
-  .glass-nav {
-    background: hsla(240, 20%, 4%, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid hsla(0, 0%, 100%, 0.05);
-  }
-
-  .glass-button {
-    background: hsla(265, 90%, 60%, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid hsla(265, 90%, 60%, 0.3);
-    border-radius: 9999px;
-  }
-
-  /* Animations */
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
@@ -175,11 +151,6 @@
     animation-delay: 2s;
   }
 
-  .animate-float-delay-4 {
-    animation: float 4s ease-in-out infinite;
-    animation-delay: 3s;
-  }
-
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
   }
@@ -190,16 +161,20 @@
   }
 
   .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px hsla(265, 90%, 60%, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px hsla(76, 88%, 69%, 0.3);
   }
 
-  /* Phone glow effect */
-  .phone-glow {
-    background: radial-gradient(
-      circle at center,
-      hsla(265, 90%, 60%, 0.15) 0%,
-      transparent 70%
-    );
+  /* Bento card style */
+  .bento-card {
+    background: white;
+    border-radius: 24px;
+    border: 1px solid hsla(220, 15%, 90%, 0.8);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   }
 }

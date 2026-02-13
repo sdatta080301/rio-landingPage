@@ -1,193 +1,136 @@
 "use client";
 
-import { useRef } from "react";
-import {
-  Link2,
-  Tags,
-  Target,
-  CreditCard,
-  Plane,
-  Sparkles,
-  Brain,
-} from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { Plus, Shield, TrendingUp, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { WaitlistModal } from "@/components/shared/WaitlistModal";
 
-const currentFeatures = [
-  {
-    icon: Link2,
-    title: "Automated Tracking",
-    description: "Connect your accounts with Plaid for seamless, real-time financial tracking.",
-  },
-  {
-    icon: Tags,
-    title: "Smart Categorization",
-    description: "Transactions automatically categorized so you always know where your money goes.",
-  },
-  {
-    icon: Target,
-    title: "Smart Budgeting",
-    description: "Set custom budgets and track your progress in real-time with visual insights and alerts.",
-  },
-  {
-    icon: CreditCard,
-    title: "Credit Card Dashboard",
-    description: "Track spending, categories, and balances across all your cards in one place.",
-  },
-];
-
-const comingSoonFeatures = [
-  {
-    icon: Plane,
-    title: "AI Travel Agent",
-    description: "Find the most optimal way to use your points and miles for maximum value.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI Card Advisor",
-    description: "Get personalized credit card recommendations based on your spending habits.",
-  },
-  {
-    icon: Brain,
-    title: "AI Spending Insights",
-    description: "Intelligent analysis of your spending patterns with actionable advice.",
-  },
+const connections = [
+  { name: "Savannah Nguyen", subtitle: "Unlock the power of real-time" },
+  { name: "Brooklyn Simmons", subtitle: "Unlock the power of real-time" },
+  { name: "Albert Flores", subtitle: "Unlock the power of real-time" },
 ];
 
 export function FeaturesSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section ref={sectionRef} id="features" className="relative bg-background py-24 lg:py-32 overflow-hidden">
-      {/* Background gradient with parallax */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.02] to-transparent pointer-events-none"
-        style={{ y: backgroundY }}
-      />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16 lg:mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
-            Everything you need
-          </h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto font-light">
-            Powerful tools to take control of your finances
-          </p>
-        </motion.div>
-
-        {/* Current Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-20 max-w-4xl mx-auto">
-          {currentFeatures.map((feature, index) => (
+    <>
+      <section id="features" className="relative bg-background pb-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Card 1 - Connect Easily */}
             <motion.div
-              key={feature.title}
-              className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-300"
-              initial={{ opacity: 0, y: 40 }}
+              className="bento-card p-6"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
             >
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 text-purple-400" />
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-semibold text-text-primary">Connect Easily</h3>
+                <span className="text-sm text-text-muted">See all</span>
               </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-semibold text-white mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {feature.description}
-              </p>
+              <div className="space-y-4">
+                {connections.map((person) => (
+                  <div key={person.name} className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-xs font-medium text-gray-600">
+                        {person.name.split(" ").map(n => n[0]).join("")}
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-text-primary">{person.name}</p>
+                        <p className="text-xs text-text-muted">{person.subtitle}</p>
+                      </div>
+                    </div>
+                    <button className="w-8 h-8 rounded-full border border-border-subtle flex items-center justify-center hover:bg-surface transition-colors">
+                      <Plus className="w-4 h-4 text-text-secondary" />
+                    </button>
+                  </div>
+                ))}
+              </div>
             </motion.div>
-          ))}
-        </div>
 
-        {/* Coming Soon Section */}
-        <div className="relative">
-          {/* Section Header */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-400 text-sm font-medium">Coming Soon</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">
-              AI-Powered Features
-            </h3>
-            <p className="text-white/50 text-base max-w-xl mx-auto font-light">
-              The future of personal finance, powered by artificial intelligence
-            </p>
-          </motion.div>
+            {/* Card 2 - Digital Banking Platform */}
+            <motion.div
+              className="bento-card p-6 bg-gradient-to-br from-rio-green/30 to-rio-green/10 relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <h3 className="text-xl font-bold text-text-primary mb-2">
+                Digital Banking
+                <br />
+                Platform!
+              </h3>
 
-          {/* Coming Soon Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-            {comingSoonFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                className="group relative p-6 rounded-2xl bg-gradient-to-b from-purple-500/[0.05] to-transparent border border-purple-500/10 transition-all duration-300"
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+              {/* Platform icons */}
+              <div className="flex items-center gap-3 my-4">
+                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.523 2H6.477A4.477 4.477 0 002 6.477v11.046A4.477 4.477 0 006.477 22h11.046A4.477 4.477 0 0022 17.523V6.477A4.477 4.477 0 0017.523 2zM12 17.5a5.5 5.5 0 110-11 5.5 5.5 0 010 11z"/>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Try Now button */}
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-rio-green text-text-primary font-medium text-sm rounded-full cta-button"
               >
-                {/* Blurred content */}
-                <div className="blur-[6px] select-none pointer-events-none">
-                  {/* Icon */}
-                  <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600/30 to-violet-600/30 border border-purple-500/30 flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-purple-300" />
-                  </div>
+                Try Now
+              </button>
 
-                  {/* Content */}
-                  <h3 className="relative text-lg font-semibold text-white mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="relative text-white/40 text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
+              {/* Decorative blob */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-rio-green/20 rounded-full blur-xl" />
+            </motion.div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 backdrop-blur-sm">
-                    <span className="text-purple-300 text-sm font-medium">Coming Soon</span>
-                  </div>
+            {/* Card 3 - Grow Capital */}
+            <motion.div
+              className="bento-card p-6 flex flex-col justify-between relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {/* Badges */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-600 text-xs font-medium rounded-full -rotate-6">
+                  Top rated App
                 </div>
-              </motion.div>
-            ))}
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
+                  <span className="text-blue-700 text-lg font-bold">$</span>
+                </div>
+              </div>
+
+              <div className="mt-auto">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-full mb-3 rotate-3">
+                  Revolutionary
+                </div>
+                <h3 className="text-xl font-bold text-text-primary leading-tight">
+                  Grow your capital with
+                  <br />
+                  No boundary at all
+                </h3>
+                <div className="flex items-center gap-2 mt-3">
+                  <Shield className="w-4 h-4 text-text-muted" />
+                  <span className="text-sm text-text-muted">Trusted by 50,000+ people</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
-
-          {/* CTA */}
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <p className="text-white/30 text-sm">
-              Join the waitlist to get early access to AI features
-            </p>
-          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <WaitlistModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }
