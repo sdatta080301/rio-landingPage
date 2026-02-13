@@ -118,7 +118,7 @@ export default function SecurityPage() {
               <p>
                 Rio Financials, Inc.
                 <br />
-                Email: security@riofinancials.com
+                Email: useriofinancials@gmail.com
               </p>
             </div>
           </div>
