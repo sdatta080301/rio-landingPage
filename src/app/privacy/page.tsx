@@ -173,9 +173,9 @@ export default function PrivacyPage() {
                 10. Contact
               </h2>
               <p>
-                Rio Financials, Inc.
+                Rio Financials, LLC.
                 <br />
-                Email: privacy@riofinancials.com
+                Email: useriofinancials@gmail.com
               </p>
             </div>
           </div>

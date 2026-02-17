@@ -107,7 +107,7 @@ export default function SecurityPage() {
               <p>
                 If you discover a potential security vulnerability, we encourage
                 you to report it responsibly. Please contact us at{" "}
-                <strong>security@riofinancials.com</strong> with details of the
+                <strong>useriofinancials@gmail.com</strong> with details of the
                 issue. We appreciate your help in keeping Rio secure and will
                 respond promptly to all reports.
               </p>
