@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Connecting to Rio...</title>
+  </head>
+  <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:24px;">
+    <h2>Connecting to Rio...</h2>
+    <p>If the app does not open automatically, return to Rio manually.</p>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var state = params.get("oauth_state_id") || "";
+        if (state) {
+          window.location.href = "rio://plaid/oauth?oauth_state_id=" + encodeURIComponent(state);
+        }
+      })();
+    </script>
+  </body>
+</html>
