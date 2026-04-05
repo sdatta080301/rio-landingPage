@@ -20,8 +20,10 @@ export default function AuthCallbackPage() {
       return undefined;
     }
 
+    window.history.replaceState({}, "", window.location.pathname);
+
     const redirectTimer = window.setTimeout(() => {
-      window.location.href = appUrl;
+      window.location.replace(appUrl);
     }, 120);
 
     const fallbackTimer = window.setTimeout(() => {
@@ -55,16 +57,19 @@ export default function AuthCallbackPage() {
                 Auth callback
               </p>
             </div>
-            <p className="mt-4 text-sm leading-6 break-all text-white/50">{appUrl}</p>
+            <p className="mt-4 text-sm leading-6 text-white/60">
+              Secure sign-in token received. We&apos;re handing you off to the Rio app now.
+            </p>
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={appUrl}
+            <button
+              type="button"
+              onClick={() => window.location.assign(appUrl)}
               className="inline-flex items-center justify-center rounded-2xl bg-[#b8f265] px-5 py-3 text-base font-semibold text-[#091109] transition hover:brightness-105"
             >
               Open Rio
-            </a>
+            </button>
             <Link
               href="/"
               className="inline-flex items-center justify-center rounded-2xl border border-white/12 bg-white/[0.03] px-5 py-3 text-base font-medium text-white/78 transition hover:bg-white/[0.06]"
